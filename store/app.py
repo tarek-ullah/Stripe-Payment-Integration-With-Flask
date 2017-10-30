@@ -19,9 +19,8 @@ def thanku():
 
 @app.route('/paynow', methods=['POST'])
 def paynow():
-    
     customer = stripe.Customer.create(email=request.form['stripeEmail'], source=request.form['stripeToken'])
-
+    
     charge = stripe.Charge.create(
         customer=customer.id,
         amount=1000,
